@@ -1,10 +1,10 @@
 ECE281_CE5
 ==========
 
-lw $s0, 44
+addi $s0, $0, 44 
 
-lw $s1, -37
+addi $s1, $0, -37
  
-add $s2, $s1, $s0
+addi $s2, $s1, $s0
  
 sw $s2, 2B($0)
