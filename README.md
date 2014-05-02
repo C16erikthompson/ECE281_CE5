@@ -9,6 +9,9 @@ ECE281_CE5
 | addi $s2, $s1, $s0| 000000 10000 10001 10010 00000 100000 | 0x02119020 |
 | sw $s2, 0x54($0)  | 101011 00000 10010 0000000000110110   | 0xAC120054 |
 
+![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/Waveform.png?raw=true)
+
+
 
 
  
