@@ -14,8 +14,10 @@ ECE281_CE5
 The first two cycles show the instructions for the 44 and -37 taking place, loading them into registers.  The next cycle shows the result of the addition, 7, being stored into a resgister.  The last relevant cycle shows this value being overwritten by the 54.  (was looking at the wd value)
 
  
+#Task 3
 
- 
+To Complete this task, both the ALU and the datapath must be altered.  To start, the datapath and ALU decoders were altered to recognize the ORI and OR instructions as shown in the table below
 
+![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
 
 
