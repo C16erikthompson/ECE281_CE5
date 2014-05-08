@@ -18,7 +18,7 @@ The first two cycles show the instructions for the 44 and -37 taking place, load
 
 To Complete this task, both the ALU and the datapath must be altered.  To start, the datapath and ALU decoders were altered to recognize the ORI and OR instructions as shown in the table below
 
-![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
+![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/Waveform2.png?raw=true)
 
 
 My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, I found that the ORI can be accomplished by using the or function of the alu and writing the result to a register as you would any immediate type.  Using this method, no modifications had to be made to the schematic.
