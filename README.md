@@ -21,11 +21,9 @@ To Complete this task, both the ALU and the datapath must be altered.  To start,
 ![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
 
 
-My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, I found that the ORI can be accomplished by using the or function of the alu and writing the result to a register as you would any immediate type.  Using this method, no modifications had to be made to the datapath, so it appears as follows:
+My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, I found that the ORI can be accomplished by using the or function of the alu and writing the result to a register as you would any immediate type.  Using this method, no modifications had to be made to the schematic.
 
-![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
-
-implement my design in vhdl, the following lines of code had to be added:
+To implement my design in vhdl, the following lines of code had to be added:
 
 Process (op) begin
  case op is
