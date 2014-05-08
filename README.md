@@ -18,7 +18,7 @@ The first two cycles show the instructions for the 44 and -37 taking place, load
 
 To Complete this task, both the ALU and the datapath must be altered.  To start, the datapath and ALU decoders were altered to recognize the ORI and OR instructions as shown in the table below
 
-![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/Waveform2.png?raw=true)
+![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
 
 
 My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, I found that the ORI can be accomplished by using the or function of the alu and writing the result to a register as you would any immediate type.  Using this method, no modifications had to be made to the schematic.
@@ -27,13 +27,19 @@ To implement my design in vhdl, the following lines of code had to be added:
 
 Process (op) begin
  case op is
+ 
  .....
+ 
  when "001101" => controls <= "101000011"; -- ORI
+ 
  .....
  
  case aluop is
+ 
  ....
+ 
  when "10" => alucontrol <= "001"; -- or (for ori) 
+ 
  ....
  
  
@@ -47,6 +53,6 @@ To test my design I inserted the following instructions into the test bench
         
 This code produced the following waveform when simulated:
 
-![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
+![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/Waveform2.png?raw=true)
 
 By the value in spot 18 in memory is the result of the ori instruction.  It is shown to be a success, with a '1' for every bit in the result.
