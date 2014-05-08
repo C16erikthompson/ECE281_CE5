@@ -21,3 +21,34 @@ To Complete this task, both the ALU and the datapath must be altered.  To start,
 ![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
 
 
+My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, I found that the ORI can be accomplished by using the or function of the alu and writing the result to a register as you would any immediate type.  Using this method, no modifications had to be made to the datapath, so it appears as follows:
+
+![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
+
+implement my design in vhdl, the following lines of code had to be added:
+
+Process (op) begin
+ case op is
+ .....
+ when "001101" => controls <= "101000011"; -- ORI
+ .....
+ 
+ case aluop is
+ ....
+ when "10" => alucontrol <= "001"; -- or (for ori) 
+ ....
+ 
+ 
+To test my design I inserted the following instructions into the test bench
+
+     	  instr <= X"2010002C"; -- adding 44 to $s0
+        wait for clk_period;
+        
+        instr <= X"3612FFDB"; -- ORI $s0 with -37
+        wait for clk_period;
+        
+This code produced the following waveform when simulated:
+
+![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
+
+By the value in spot 18 in memory is the result of the ori instruction.  It is shown to be a success, with a '1' for every bit in the result.
