@@ -21,7 +21,7 @@ To Complete this task, both the ALU and the datapath must be altered.  To start,
 ![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
 
 
-My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, mainstaining the addition of the zeroextender, I added another multiplexer through which both the zero extend and sign extend had to pass.  Which output was chosen was dictated by a signal orisig that was the output of the logic (not alucontrol(2)) and (not alucontrol(1)) and (alucontrol(0)).  Should orisig be high, the zeroextended value would pass into the ALU.  In addition, the following lines of code were added into the ALU and single cycle processor code:
+My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, mainstaining the addition of the zeroextender, I added another multiplexer through which both the zero extend and sign extend had to pass.  Which output was chosen was dictated by a signal orisig that was the output of the logic (not alucontrol(2)) and (not alucontrol(1)) and (alucontrol(0)).  Should orisig be high, the zeroextended value would pass into the SrcBmux.  In addition, the following lines of code were added into the ALU and single cycle processor code:
 
 Process (op) begin
  case op is
