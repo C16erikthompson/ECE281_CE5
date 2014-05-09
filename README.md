@@ -21,7 +21,7 @@ To Complete this task, both the ALU and the datapath must be altered.  To start,
 ![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
 
 
-My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, I found that the ORI can be accomplished by using the or function of the alu and writing the result to a register as you would any immediate type.  Using this method, no modifications had to be made to the schematic.
+My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, mainstaining the addition of the zeroextender, I added another multiplexer through which both the zero extend and sign extend had to pass.  Which output was chosen was dictated by an "and" gate that combined the values of 
 
 To implement my design in vhdl, the following lines of code had to be added:
 
@@ -56,3 +56,7 @@ This code produced the following waveform when simulated:
 ![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/Waveform2.png?raw=true)
 
 By the value in spot 18 in memory is the result of the ori instruction.  It is shown to be a success, with a '1' for every bit in the result.
+
+#Documentation
+
+C3C Jacob Lawson assisted me in the creation of the test benc and the conceptual use of the AND gate to incorporate the new multiplexer with the zero extend.
