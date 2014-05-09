@@ -21,9 +21,7 @@ To Complete this task, both the ALU and the datapath must be altered.  To start,
 ![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/ALUinstr.png?raw=true)
 
 
-My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, mainstaining the addition of the zeroextender, I added another multiplexer through which both the zero extend and sign extend had to pass.  Which output was chosen was dictated by an "and" gate that combined the values of 
-
-To implement my design in vhdl, the following lines of code had to be added:
+My first attempt at implementing the ORI instruction involved adding a bit extender and increasing the size of the ALU.  Unable to get this to perform properly, mainstaining the addition of the zeroextender, I added another multiplexer through which both the zero extend and sign extend had to pass.  Which output was chosen was dictated by a signal orisig that was the output of the logic (not alucontrol(2)) and (not alucontrol(1)) and (alucontrol(0)).  Should orisig be high, the zeroextended value would pass into the ALU.  In addition, the following lines of code were added into the ALU and single cycle processor code:
 
 Process (op) begin
  case op is
@@ -45,17 +43,26 @@ Process (op) begin
  
 To test my design I inserted the following instructions into the test bench
 
-     	  instr <= X"2010002C"; -- adding 44 to $s0
+       instr <= X"2010002c";
         wait for clk_period;
-        
-        instr <= X"3612FFDB"; -- ORI $s0 with -37
+
+        instr <= X"2011ffdb";
+        wait for clk_period;
+
+        instr <= X"02309020";
+        wait for clk_period;
+
+        instr <= X"36538000";
+        wait for clk_period;
+
+        instr <= X"AC120054";
         wait for clk_period;
         
 This code produced the following waveform when simulated:
 
 ![](https://github.com/C16erikthompson/ECE281_CE5/blob/master/Waveform2.png?raw=true)
 
-By the value in spot 18 in memory is the result of the ori instruction.  It is shown to be a success, with a '1' for every bit in the result.
+The value in memory location 18 is the result of and or operation calculated on the values 0x8000 and 0x0007.  The signal shows that these values were "or"ed bitwise to produce the output 0x8007, proving that the design was successful.
 
 #Documentation
 
