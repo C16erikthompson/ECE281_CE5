@@ -97,19 +97,33 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-     	  instr <= X"2010002C";
-        wait for clk_period;
-        
-        instr <= X"2011FFDB";
-        wait for clk_period;
-        
-        instr <= X"02119020";
-        wait for clk_period;
-        
-        instr <= X"AC120054";
+--     	  instr <= x"2010002c";
+--        wait for clk_period;
+--        
+--        instr <= x"2011ffdb";
+--        wait for clk_period;
+--        
+--        instr <= x"02119020";
+--        wait for clk_period;
+--        
+--        instr <= x"ac120054";
+--       wait for clk_period;
+
+        instr <= X"2010002C";
         wait for clk_period;
 
-		instr <= X"00000000";
+        instr <= X"2011FFDB";
+        wait for clk_period;
+
+        instr <= X"02309020";
+        wait for clk_period;
+
+        instr <= X"36538000";
+        wait for clk_period;
+
+        instr <= X"AC120054";
+        wait for clk_period;
+       
       wait;
    end process;
 
